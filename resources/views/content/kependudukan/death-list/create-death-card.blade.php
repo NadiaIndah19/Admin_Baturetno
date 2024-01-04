@@ -1,0 +1,161 @@
+@extends('layouts/contentNavbarLayout')
+
+@section('title')
+
+@section('page-script')
+    <script src="{{ asset('assets/js/pages-account-settings-account.js') }}"></script>
+@endsection
+
+@section('content')
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Kependudukan /</span> AKTA Kematian
+    </h4>
+
+    <div class="row">
+            <div class="card mb-4">
+                <h5 class="card-header">Create AKTA Kematian</h5>
+                <hr class="my-0">
+                <div class="card-body">
+                    <form action="{{ route('aktakematian.store') }}" id="formAccountSettings" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="mb-3 col-md-6">
+                                <label for="namepen" class="form-label">Nama Pendaftar <span class="ml-1 text-danger">*</span></label>
+                                <input class="form-control" type="text" id="namepen" name="nama_pendaftar" autofocus />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="relation">Hubungan <span class="ml-1 text-danger">*</span></label>
+                                <select id="relation" name="hubungan" class="select2 form-select">
+                                    <option selected disabled>Pilih hubungan</option>
+                                    <option value="ayah">Ayah</option>
+                                    <option value="ibu">Ibu</option>
+                                    <option value="anak">Anak</option>
+                                    <option value="suami">Suami</option>
+                                    <option value="istri">Istri</option>
+                                    <option value="keluargalainnya">Keluarga</option>
+                                    <option value="lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="NIKAlm" class="form-label">NIK Alm <span class="ml-1 text-danger">*</span></label>
+                                <input class="form-control" type="number" id="NIKAlm" name="nik_alm" maxlength="16"/>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="name" class="form-label">Nama Lengkap Alm <span class="ml-1 text-danger">*</span></label>
+                                <input class="form-control" type="text" id="name" name="nama" autofocus />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="ttlAlm" class="form-label">Tempat Lahir <span class="ml-1 text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="ttlAlm" name="tempat_lahir" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="ttlAlm" class="form-label">Tanggal Lahir <span class="ml-1 text-danger">*</span></label>
+                                        <input type="date" class="form-control" id="ttlAlm" name="tanggal_lahir" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label" for="agama">Agama <span class="ml-1 text-danger">*</span></label>
+                                <div class="input-group input-group-merge">
+                                  <span class="input-group-text"></span>
+                                  <select name="agama" class="form-control" id="agama" required>
+                                    <option selected>Pilih Agama</option>
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen">Kristen</option>
+                                    <option value="Budha">Budha</option>
+                                    <option value="Hindu">Hindu</option>     
+                                    <option value="Konghucu">Konghucu</option>                  
+                                  </select>
+                                </div>
+                            </div>
+                            {{-- <div class="mb-3 col-md-6">
+                                <label for="religion" class="form-label">Agama</label>
+                                <input type="text" class="form-control" id="religion" name="agama" />
+                            </div> --}}
+                            <div class="mb-3 col-md-6">
+                                <label for="statusAlm" class="form-label">Status Perkawinan <span class="ml-1 text-danger">*</span></label>
+                                <select id="statusAlm" name="status_perkawinan" class="select2 form-select">
+                                    <option selected disabled>Pilih status</option>
+                                    <option value="Belum Kawin">Belum kawin</option>
+                                    <option value="Kawin">Kawin</option>
+                                    <option value="Cerai Hidup">Cerai hidup</option>
+                                    <option value="Cerai Mati">Cerai mati</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label class="form-label" for="gender">Jenis Kelamin <span class="ml-1 text-danger">*</span></label>
+                                <select id="gender" name="jenis_kelamin" class="select2 form-select">
+                                    <option>Pilih Gender</option>
+                                    <option value="Laki-Laki">Laki-laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="jobs" class="form-label">Pekerjaan <span class="ml-1 text-danger">*</span></label>
+                                <input type="text" class="form-control" id="jobs" name="pekerjaan"
+                                     />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="state" class="form-label">Kewarganegaraan <span class="ml-1 text-danger">*</span></label>
+                                <input type="text" class="form-control" id="state" name="kewarganegaraan" />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="tptdeath" class="form-label">Tempat Meninggal <span class="ml-1 text-danger">*</span></label>
+                                <input type="text" class="form-control" id="tptdeath" name="tempat_meninggal"  />
+                            </div>
+                            <div class="mb-3 col-md-6">
+                                <label for="basic-icon-default-tgldeath" class="form-label">Tanggal Meninggal <span class="ml-1 text-danger">*</span></label>
+                                <div class="input-group input-group-merge">
+                                    <input class="form-control" type="date" name="tanggal_meninggal"  id="html5-tgldeath" />
+                                </div>
+                            </div>
+                            <div class="mb-3 col-md-4">
+                                <label for="penyebabkematian" class="form-label">Penyebab Kematian <span class="ml-1 text-danger">*</span></label>
+                                <input type="text" class="form-control" id="penyebabkematian" name="penyebab_kematian" />
+                            </div>
+                            <div class="mb-3 col-md-4">
+                                <label for="address" class="form-label">Alamat <span class="ml-1 text-danger">*</span></label>
+                                <input type="text" class="form-control" id="address" name="alamat" />
+                            </div>
+                            <div class="mb-3 col-md-4">
+                                <label for="notes" class="form-label">Catatan <span class="ml-1 text-danger">*</span></label>
+                                <input type="text" class="form-control" id="notes" name="catatan" />
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="filePernyataan" class="form-label">File Pernyataan Kematian <span class="ml-1 text-danger">*</span></label>
+                                <input class="form-control" type="file" id="filePernyataan" name="file_pernyataan">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="fileKTP" class="form-label">File KTP <span class="ml-1 text-danger">*</span></label>
+                                <input class="form-control" type="file" id="fileKTP" name="file_ktp">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="fileKK" class="form-label">File KK <span class="ml-1 text-danger">*</span></label>
+                                <input class="form-control" type="file" id="fileKK" name="file_kk">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="fileTTD" class="form-label">File TTD <span class="ml-1 text-danger">*</span></label>
+                                <input class="form-control" type="file" id="fileTTD" name="file_ttd">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="fileaktakel" class="form-label">File Akta Kelahiran <span class="ml-1 text-danger">*</span></label>
+                                <input class="form-control" type="file" id="fileaktakel" name="file_akta_kelahiran">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="filebukunikah" class="form-label">File Buku Nikah <span class="ml-1 text-danger">*</span></label>
+                                <input class="form-control" type="file" id="filebukunikah" name="file_buku_nikah">
+                            </div>
+                            <small class="mb-3 col-md-6">note : untuk (*) wajib diisi</small>
+                            <div class="mt-2">
+                                <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                                <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+@endsection

@@ -1,0 +1,78 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashboard",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "dashboard"
+    },
+    {
+      "menuHeader": "Users"
+    },
+    {
+      "name": "User Management",
+      "icon": "menu-icon tf-icons bx bxs-user-account",
+      "slug": "user-management",
+      "url": "/users/user-management"
+    },
+    {
+      "menuHeader": "Administrasi"
+    },
+    {
+      "name": "Kependudukan",
+      "icon": "menu-icon tf-icons bx bxs-user-badge",
+      "slug": "kependudukan",
+      "submenu": [
+        {
+          "url": "/kependudukan/fams-list/family-card",
+          "name": "KK (Kartu Keluarga)",
+          "slug": "kependudukan-kk-card"
+        },
+        {
+          "url": "/kependudukan/id-card/id-card-person",
+          "name": "KTP (Kartu Tanda Penduduk)",
+          "slug": "kependudukan-ktp.index"
+        },
+        {
+          "url": "/kependudukan/death-list/death-card",
+          "name": "AKTA",
+          "slug": "kependudukan-death-card"
+        }
+      ]
+    },
+    {
+      "name": "Pelayanan",
+      "icon": "menu-icon tf-icons bx bx-cube-alt",
+      "slug": "pelayanan",
+      "submenu": [
+        {
+          "url": "/pelayanan/imb/imb-card",
+          "name": "IMB (Izin Mendirikan Bangunan)",
+          "slug": "izin-bangunan"
+        },
+        {
+          "url": "/pelayanan/siup/siup-card",
+          "name": "SIUP (Surat Izin Usaha Perdagangan)",
+          "slug": "izin-bisnis"
+        },
+        {
+          "url": "/pelayanan/kip/kip-card",
+          "name": "KIP (Kartu Indonesia Pintar)",
+          "slug": "pelayanan-card-kip"
+        }
+      ]
+    },
+    {
+      "name": "Pengaduan",
+      "icon": "menu-icon tf-icons bx bx-box",
+      "slug": "info-complaints",
+      "url": "/pengaduan/complaints"
+    },
+    {
+      "name": "Informasi",
+      "icon": "menu-icon tf-icons bx bx-info-circle",
+      "slug": "info-news",
+      "url": "/info/news"
+    }
+  ]
+}
